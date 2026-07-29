@@ -16,9 +16,15 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+          cache: maven
       - name: Verify Java Installation
         run: java -version
       - name: Give execute permission to Maven Wrappper
         run: chmod +x mvnw
       - name: Build Spring Boot Application
         run: ./mvnw clean package
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: springboor-jar
+          path: targer/*.jar
