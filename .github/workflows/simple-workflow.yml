@@ -1,0 +1,10 @@
+name: First Yaml
+on: workflow_dispatch
+jobs:
+  terminal-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: echo 'Running the workflow !!'
+      - name: goodbye
+        run: echo 'Ending the workflow'
