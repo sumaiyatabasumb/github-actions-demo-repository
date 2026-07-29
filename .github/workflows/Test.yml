@@ -3,3 +3,9 @@ on:
   push:
     branches:
       - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Hello, I wrote my own Yaml"
