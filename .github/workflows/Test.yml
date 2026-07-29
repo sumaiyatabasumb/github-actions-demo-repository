@@ -18,3 +18,5 @@ jobs:
           distribution: 'temurin'
       - name: Verify Java Installation
         run: java -version
+      - name: Build Spring Boot Application
+        run: ./mvnw clean package
