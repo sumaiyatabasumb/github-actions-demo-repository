@@ -21,13 +21,20 @@ jobs:
         run: java -version
       - name: Give execute permission to Maven Wrappper
         run: chmod +x mvnw
-      - name: Build Spring Boot Application
-        run: ./mvnw clean package
+#      - name: Build Spring Boot Application
+#        run: ./mvnw clean package
+      - name: Build, Test and SonarCloud Analysis
+        run: |
+              ./mvnw clean verify sonar:sonar \
+              -Dsonar.projectKey=sumaiyatabasumb_github-actions-demo-repository \
+              -Dsonar.organization=sumaiyatabasumb \
+              -Dsonar.host.url=https://sonarcloud.io \
+              -Dsonar.token=${{ secrets.SONAR_TOKEN }}
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: springboot-jar
-          path: targer/*.jar
+          path: target/*.jar
       - name: Login to Docker
         uses: docker/login-action@v4
         with:
